@@ -6,19 +6,20 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/05/02 16:10:43 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/05/09 16:51:36 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME				= so_long
 
-CC					= gcc
+CC					= gcc -g3 -fsanitize=address
 
 CFLAGS				= -Wall -Wextra -Werror
 
 RM					= rm -rf
 
-SRCS				= main.c
+SRCS				= main.c \
+					  parsing.c
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 
