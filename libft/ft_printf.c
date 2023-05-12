@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:03:34 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/02/24 12:08:31 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:17:47 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_print_format(va_list args, const char *format)
 	else if (*format == 's')
 		print_length += ft_printstr(va_arg(args, char *));
 	else if (*format == 'p')
-		print_length += ft_print_address(va_arg(args, unsigned long long),
+		print_length += ft_print_address(va_arg(args, long long),
 				"0123456789abcdef");
 	else if (*format == 'd' || *format == 'i')
 		print_length += ft_printnbr_base(va_arg(args, int), "0123456789");

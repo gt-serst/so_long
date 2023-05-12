@@ -6,13 +6,13 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/05/09 16:51:36 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/05/12 17:59:02 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME				= so_long
 
-CC					= gcc -g3 -fsanitize=address
+CC					= gcc
 
 CFLAGS				= -Wall -Wextra -Werror
 

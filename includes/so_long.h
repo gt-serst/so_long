@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/09 17:47:02 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:15:45 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <errno.h>
 # include <../libft/libft.h>
 
-int		ft_parsing(char **av);
+char	**ft_parsing(char **av);
+void	ft_free_arr(char **arr);
 void	ft_exit_msg(void);
 
 #endif

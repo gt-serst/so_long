@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 17:15:32 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/01/20 14:23:26 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:05:02 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int print_length)
 			print_length));
 }
 
-int	ft_print_address(unsigned long nbr, char *base)
+int	ft_print_address(long nbr, char *base)
 {
 	int	len_base;
 	int	print_length;

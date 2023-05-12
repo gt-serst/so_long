@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 16:25:50 by gt-serst          #+#    #+#             */
-/*   Updated: 2022/12/08 15:40:49 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:05:08 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int			ft_printchar(char c);
 
 int			ft_printstr(char *s);
 
-int			ft_print_address(unsigned long nbr, char *base);
+int			ft_print_address(long nbr, char *base);
 
 int			ft_printnbr_base(long nbr, char *base);
 
