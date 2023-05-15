@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
+#    By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/05/12 17:59:02 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/05/15 17:14:22 by geraudtsers      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ CFLAGS				= -Wall -Wextra -Werror
 RM					= rm -rf
 
 SRCS				= main.c \
-					  parsing.c
+					  parsing.c \
+					  parsing_utils.c \
+					  parsing_utils2.c \
+					  flood_fill.c
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 
