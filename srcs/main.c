@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/15 17:23:16 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/05/18 19:35:52 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_exit(char **matrix, char *msg)
 	ft_free_arr(matrix);
 	write(1, "Error\n", 6);
 	write(1, msg, ft_strlen(msg));
-	system("leaks so_long");
+	//system("leaks so_long");
 	exit(errno);
 }
 
@@ -54,8 +54,9 @@ int	main(int ac, char **av)
 		return (1);
 	matrix = ft_parsing(av[1]);
 	ft_get_player_position(matrix);
+	ft_init_mlx(matrix);
 	ft_print_matrix(matrix);
 	ft_free_arr(matrix);
-	system("leaks so_long");
+	//system("leaks so_long");
 	return (0);
 }
