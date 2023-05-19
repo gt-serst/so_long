@@ -44,6 +44,24 @@ static int	ft_get_exit_position(char **matrix)
 	return (0);
 }
 
+static int	ft_get_collectible_position(char **matrix)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (matrix[i])
+	{
+		j = 0;
+		while (matrix[i][j] && matrix[i][j] != 'C')
+			j++;
+		if (matrix[i][j] == 'C')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	ft_get_player_position(char **matrix)
 {
 	int	i;
@@ -62,6 +80,6 @@ void	ft_get_player_position(char **matrix)
 		}
 		i++;
 	}
-	if (ft_get_exit_position(matrix))
-		ft_exit(matrix, "No path to exit\n");
+	if (ft_get_exit_position(matrix) || ft_get_collectible_position(matrix))
+		ft_exit(matrix, "No valid path found\n");
 }

@@ -6,7 +6,7 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/05/18 19:40:09 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/05/19 18:01:40 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME				= so_long
 
 CC					= gcc
 
-C_FLAGS				= -Wall -Wextra -Werror
+CFLAGS				= -Wall -Wextra -Werror
 
 RM					= rm -rf
 
@@ -41,12 +41,12 @@ MLX_FLAGS_L			= -Imlx_linux -lXext -lX11 -lm -lz
 MLX_FLAGS_M			= -lmlx -framework OpenGL -framework AppKit
 
 .c.o:
-					$(CC) $(CFLAGS) -c -I ./includes $(MLX_INCLUDES_L) -c $< -o $(<:.c=.o)
+					$(CC) -c -I ./includes $(MLX_INCLUDES_L) -c $< -o $(<:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-					$(CC) $(OBJS) $(LIBFT) $(MLX_L) $(MLX_FLAGS_L) -o $(NAME)
+					$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_L) $(MLX_FLAGS_L) -o $(NAME)
 
 $(LIBFT):
 					make -C $(LIBFT_PATH) all

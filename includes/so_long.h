@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/18 19:35:47 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:01:38 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,33 @@
 # include <errno.h>
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
+
+typedef struct s_vector
+{
+	int	x;
+	int	y;
+}				t_vector;
+
+typedef struct	s_window {
+	void		*reference;
+	t_vector	size;
+}				t_window;
+
+typedef struct	s_image {
+	void		*reference;
+	t_vector	size;
+	char		*pixels;
+	int			bits_per_pixel;
+	int			line_size;
+	int			endian;
+}				t_image;
+
+typedef struct	s_program {
+	void		*mlx;
+	t_window	window;
+	t_image		sprite;
+	t_vector	sprite_position;
+}				t_program;
 
 /*			PARSING			*/
 char	**ft_parsing(char *argv);
