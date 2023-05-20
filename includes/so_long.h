@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/19 17:01:38 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/20 23:29:20 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,14 @@
 # include <fcntl.h>
 # include <errno.h>
 # include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
+# include "../minilibx-opengl/mlx.h"
+
+typedef struct s_graphic
+{
+	int		pixel_x;
+	int		pixel_y;
+	char	*path;
+}				t_graphic;
 
 typedef struct s_vector
 {
@@ -46,7 +53,7 @@ typedef struct	s_program {
 	t_vector	sprite_position;
 }				t_program;
 
-/*			PARSING			*/
+/*				PARSING					*/
 char	**ft_parsing(char *argv);
 int		ft_open_fd(char *argv);
 int		ft_count_lines(char *argv);
@@ -56,16 +63,20 @@ int		ft_check_length(char **matrix);
 int		ft_check_width(char **matrix);
 int		ft_get_nb_of_components(char **matrix);
 
-/*			FLOOD FILL			*/
+/*				FLOOD FILL				*/
 void	ft_get_player_position(char **matrix);
 
-/*			MLX MANAGEMENT			*/
-void	ft_init_mlx(char **matrix);
+/*				MLX INIT				*/
+void	ft_mlx_init(char **matrix);
 
-/*			CLEANING DATA			*/
+/*				GRAPHIC MANAGEMENT		*/
+void	ft_put_sprite_to_window(t_program *program, t_graphic *graphic);
+t_image	ft_new_sprite(void *mlx, char *path);
+
+/*				CLEANING DATA			*/
 void	ft_free_arr(char **arr);
 
-/*			ERROR MANAGEMENT		*/
+/*				ERROR MANAGEMENT		*/
 void	ft_exit(char **matrix, char *msg);
 
 void	ft_print_matrix(char **matrix);

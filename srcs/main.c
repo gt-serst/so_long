@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/19 18:11:03 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/20 23:25:22 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	main(int ac, char **av)
 		return (1);
 	ft_get_player_position(copy);
 	ft_free_arr(copy);
-	ft_init_mlx(matrix);
+	ft_mlx_init(matrix);
 	ft_print_matrix(matrix);
 	ft_free_arr(matrix);
 	//system("leaks so_long");
