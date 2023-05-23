@@ -1,85 +1,85 @@
 #include "../includes/so_long.h"
 
-static void ft_recursive(char **matrix, int i, int j, int empty, int walls)
+static void ft_recursive(char **map, int row, int col, int empty, int walls)
 {
 	int	n;
 	int	m;
 
-	n = ft_strlen(matrix[0]) - 1;
-	m = ft_count_rows(matrix) - 1;
-	if (i < 0 || i >= m || j < 0 || j >= n || matrix[i][j] == walls)
+	n = ft_strlen(map[0]) - 1;
+	m = ft_count_rows(map) - 1;
+	if (row < 0 || row >= m || col < 0 || col >= n || map[row][col] == walls)
 		return ;
 	else
 	{
-		matrix[i][j] = walls;
-		ft_recursive(matrix, i + 1, j, empty, walls);
-		ft_recursive(matrix, i - 1, j, empty, walls);
-		ft_recursive(matrix, i, j + 1, empty, walls);
-		ft_recursive(matrix, i, j - 1, empty, walls);
+		map[row][col] = walls;
+		ft_recursive(map, row + 1, col, empty, walls);
+		ft_recursive(map, row - 1, col, empty, walls);
+		ft_recursive(map, row, col + 1, empty, walls);
+		ft_recursive(map, row, col - 1, empty, walls);
 	}
 }
 
-static void	ft_flood_fill(char **matrix, int i, int j, int walls)
+static void	ft_flood_fill(char **map, int row, int col, int walls)
 {
-	if (matrix[i][j] == walls)
+	if (map[row][col] == walls)
 		return ;
-	ft_recursive(matrix, i, j, 48, walls);
+	ft_recursive(map, row, col, 48, walls);
 }
 
-static int	ft_get_exit_position(char **matrix)
+static int	ft_get_exit_position(char **map)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 
-	i = 0;
-	while (matrix[i])
+	row = 0;
+	while (map[row])
 	{
-		j = 0;
-		while (matrix[i][j] && matrix[i][j] != 'E')
-			j++;
-		if (matrix[i][j] == 'E')
+		col = 0;
+		while (map[row][col] && map[row][col] != 'E')
+			col++;
+		if (map[row][col] == 'E')
 			return (1);
-		i++;
+		row++;
 	}
 	return (0);
 }
 
-static int	ft_get_collectible_position(char **matrix)
+static int	ft_get_collectible_position(char **map)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 
-	i = 0;
-	while (matrix[i])
+	row = 0;
+	while (map[row])
 	{
-		j = 0;
-		while (matrix[i][j] && matrix[i][j] != 'C')
-			j++;
-		if (matrix[i][j] == 'C')
+		col = 0;
+		while (map[row][col] && map[row][col] != 'C')
+			col++;
+		if (map[row][col] == 'C')
 			return (1);
-		i++;
+		row++;
 	}
 	return (0);
 }
 
-void	ft_get_player_position(char **matrix)
+void	ft_get_player_position(char **map)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 
-	i = 0;
-	while (matrix[i])
+	row = 0;
+	while (map[row])
 	{
-		j = 0;
-		while (matrix[i][j] && matrix[i][j] != 'P')
-			j++;
-		if (matrix[i][j] == 'P')
+		col = 0;
+		while (map[row][col] && map[row][col] != 'P')
+			col++;
+		if (map[row][col] == 'P')
 		{
-			ft_flood_fill(matrix, i, j, 49);
+			ft_flood_fill(map, row, col, 49);
 			break ;
 		}
-		i++;
+		row++;
 	}
-	if (ft_get_exit_position(matrix) || ft_get_collectible_position(matrix))
-		ft_exit(matrix, "No valid path found\n");
+	if (ft_get_exit_position(map) || ft_get_collectible_position(map))
+		ft_exit(map, "No valid path found\n");
 }

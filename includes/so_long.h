@@ -6,7 +6,7 @@
 /*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/20 23:29:20 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/05/23 20:13:21 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,17 @@
 # include "../libft/libft.h"
 # include "../minilibx-opengl/mlx.h"
 
-typedef struct s_graphic
-{
-	int		pixel_x;
-	int		pixel_y;
-	char	*path;
-}				t_graphic;
+# define SPRITES_NB 10
 
 typedef struct s_vector
 {
 	int	x;
 	int	y;
 }				t_vector;
+
+typedef struct	s_asset {
+	char	*path;
+}				t_asset;
 
 typedef struct	s_window {
 	void		*reference;
@@ -46,39 +45,50 @@ typedef struct	s_image {
 	int			endian;
 }				t_image;
 
+typedef struct s_map
+{
+	int	row;
+	int	col;
+}				t_map;
+
 typedef struct	s_program {
+	char		**map;
 	void		*mlx;
 	t_window	window;
-	t_image		sprite;
-	t_vector	sprite_position;
+	t_image		img;
+	t_asset		sprites[SPRITES_NB];
 }				t_program;
 
 /*				PARSING					*/
-char	**ft_parsing(char *argv);
-int		ft_open_fd(char *argv);
-int		ft_count_lines(char *argv);
-char	**ft_delete_nl(char **matrix);
-int		ft_count_rows(char **matrix);
-int		ft_check_length(char **matrix);
-int		ft_check_width(char **matrix);
-int		ft_get_nb_of_components(char **matrix);
+void		ft_parsing(t_program *program, char *argv);
+int			ft_open_fd(char *argv);
+char		**ft_get_map(t_program *program, char *argv);
+void		ft_delete_nl(t_program *program);
+int			ft_count_rows(char **map);
+int			ft_check_length(char **map);
+int			ft_check_width(char **map);
 
 /*				FLOOD FILL				*/
-void	ft_get_player_position(char **matrix);
+void		ft_get_player_position(char **map);
 
 /*				MLX INIT				*/
-void	ft_mlx_init(char **matrix);
+void		ft_mlx_init(t_program *program);
 
-/*				GRAPHIC MANAGEMENT		*/
-void	ft_put_sprite_to_window(t_program *program, t_graphic *graphic);
-t_image	ft_new_sprite(void *mlx, char *path);
+/*				MLX GRAPHIC				*/
+t_window	ft_new_window(void *mlx, int width, int height, char *name);
+t_image		ft_new_sprite(void *mlx, char *path);
+void		ft_put_sprite_to_window(t_program *program, int x, int y, char *path);
+
+/*				MLX ASSETS				*/
+void		ft_put_background_assets(t_program *program);
+void		ft_put_core_assets(t_program *program);
 
 /*				CLEANING DATA			*/
-void	ft_free_arr(char **arr);
+void		ft_free_arr(char **arr);
 
 /*				ERROR MANAGEMENT		*/
-void	ft_exit(char **matrix, char *msg);
+void		ft_exit(char **map, char *msg);
 
-void	ft_print_matrix(char **matrix);
+void		ft_print_map(t_program *program);
 
 #endif

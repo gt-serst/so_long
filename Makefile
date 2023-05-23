@@ -6,7 +6,7 @@
 #    By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/05/23 11:52:35 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/05/23 20:12:52 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ RM					= rm -rf
 
 SRCS				= main.c \
 					  parsing.c \
+					  map_cleaning.c \
 					  parsing_utils.c \
-					  parsing_utils2.c \
 					  flood_fill.c \
 					  mlx_init.c \
-					  graphic_management.c
+					  mlx_graphic.c \
+					  mlx_assets.c
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 
@@ -42,12 +43,12 @@ MLX_FLAGS_L			= -Imlx_linux -lXext -lX11 -lm -lz
 MLX_FLAGS_M			= -lX11 -lmlx -lXext
 
 .c.o:
-					$(CC) -c -I ./includes $< -o $(<:.c=.o)
+					$(CC) -c -I ./includes -Imlx -c $< -o $(<:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-					$(CC) $(CFLAGS) $(MLX_INCLUDES_M) $(MLX_M) $(MLX_FLAGS_M) $(OBJS) $(LIBFT) -o $(NAME)
+					$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit  $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 					make -C $(LIBFT_PATH) all

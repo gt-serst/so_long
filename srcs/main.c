@@ -6,40 +6,40 @@
 /*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/20 23:25:22 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/05/23 20:11:50 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_print_matrix(char **matrix)
+void	ft_print_map(t_program *program)
 {
-	int	i;
+	int	row;
 
-	i = 0;
-	while (matrix[i])
+	row = 0;
+	while (program->map[row])
 	{
-		printf("%s\n", matrix[i]);
-		i++;
+		printf("%s\n", program->map[row]);
+		row++;
 	}
 }
 
 void	ft_free_arr(char **arr)
 {
-	int	i;
+	int	row;
 
-	i = 0;
-	while (arr && arr[i])
+	row = 0;
+	while (arr && arr[row])
 	{
-		free(arr[i]);
-		i++;
+		free(arr[row]);
+		row++;
 	}
 	free(arr);
 }
 
-void	ft_exit(char **matrix, char *msg)
+void	ft_exit(char **map, char *msg)
 {
-	ft_free_arr(matrix);
+	ft_free_arr(map);
 	write(1, "Error\n", 6);
 	write(1, msg, ft_strlen(msg));
 	//system("leaks so_long");
@@ -58,41 +58,41 @@ static void ft_check_extension(char *argv)
 	}
 }
 
-static char	**ft_matrix_dup(char **matrix)
+static char	**ft_clone(char **map)
 {
-	int		i;
-	char	**copy;
+	int		row;
+	char	**clone;
 
-	copy = malloc(sizeof(char *) * (ft_count_rows(matrix) + 1));
-	if (!copy)
+	clone = malloc(sizeof(char *) * (ft_count_rows(map) + 1));
+	if (!clone)
 		return (NULL);
-	i = 0;
-	while (matrix[i])
+	row = 0;
+	while (map[row])
 	{
-		copy[i] = ft_strdup(matrix[i]);
-		i++;
+		clone[row] = ft_strdup(map[row]);
+		row++;
 	}
-	copy[i] = 0;
-	return (copy);
+	clone[row] = 0;
+	return (clone);
 }
 
 int	main(int ac, char **av)
 {
-	char	**matrix;
-	char	**copy;
+	t_program	program;
+	char		**clone;
 
 	if (ac != 2)
 		return (1);
 	ft_check_extension(av[1]);
-	matrix = ft_parsing(av[1]);
-	copy = ft_matrix_dup(matrix);
-	if (!copy)
+	ft_parsing(&program, av[1]);
+	clone = ft_clone(program.map);
+	if (!clone)
 		return (1);
-	ft_get_player_position(copy);
-	ft_free_arr(copy);
-	ft_mlx_init(matrix);
-	ft_print_matrix(matrix);
-	ft_free_arr(matrix);
+	ft_get_player_position(clone);
+	ft_free_arr(clone);
+	ft_mlx_init(&program);
+	ft_print_map(&program.map);
+	ft_free_arr(&program);
 	//system("leaks so_long");
 	return (0);
 }

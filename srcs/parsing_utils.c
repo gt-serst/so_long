@@ -1,83 +1,52 @@
 #include "../includes/so_long.h"
 
-int	ft_open_fd(char *argv)
-{
-	int	map;
-
-	map = open(argv, O_RDONLY);
-	if (map < 0)
-	{
-		write(1, "Error\nFile error\n", 16);
-		exit(errno);
-	}
-	return (map);
-}
-
-int	ft_count_rows(char **matrix)
+int	ft_count_rows(char **map)
 {
 	int	count_rows;
 
 	count_rows = 0;
-	while(matrix[count_rows])
+	while(map[count_rows])
 		count_rows++;
 	return (count_rows);
 
 }
 
-int	ft_count_lines(char *argv)
+int	ft_check_length(char **map)
 {
-	int		map;
-	int		count_lines;
-	char	*line;
+	int	row;
+	int	col;
+	int	length;
 
-	map = ft_open_fd(argv);
-	count_lines = 0;
-	line = get_next_line(map);
-	while (line)
+	length = ft_strlen(map[0]);
+	row = 0;
+	while (map[row])
 	{
-		count_lines++;
-		free(line);
-		line = get_next_line(map);
+		col = 0;
+		while (map[row][col])
+			col++;
+		if (length != col)
+			return (0);
+		row++;
 	}
-	close(map);
-	return (count_lines);
+	return (1);
 }
 
-static int	ft_check_max_nb(int c, int e, int p)
+int	ft_check_width(char **map)
 {
-	if (c >= 1 && e == 1 && p == 1)
-		return (1);
-	else
-		return (0);
-}
+	int	row;
+	int	col;
+	int	width;
 
-int	ft_get_nb_of_components(char **matrix)
-{
-	int	i;
-	int	j;
-	int	c;
-	int	e;
-	int	p;
-
-	i = 0;
-	c = 0;
-	e = 0;
-	p = 0;
-	while (matrix[i])
+	width = ft_count_rows(map);
+	col = 0;
+	while (map[0][col])
 	{
-		j = 0;
-		while (matrix[i][j])
-		{
-			if (matrix[i][j] == 'C')
-				c++;
-			else if (matrix[i][j] == 'E')
-				e++;
-			else if( matrix[i][j] == 'P')
-				p++;
-			j++;
-		}
-		i++;
+		row = 0;
+		while (map[row])
+			row++;
+		if (width != row)
+			return (0);
+		col++;
 	}
-	return (ft_check_max_nb(c, e, p));
+	return (1);
 }
-

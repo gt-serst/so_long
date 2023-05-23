@@ -6,108 +6,106 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:45:26 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/19 17:32:23 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:10:57 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static int	ft_check_type_of_components(char **matrix)
+static int	ft_count_components(t_program *program, char charset)
 {
-	int	i;
-	int	j;
+	int	row;
+	int col;
+	int	count;
 
-	i = 0;
-	while (matrix[i])
+	row = 0;
+	count = 0;
+	while (program->map[row])
 	{
-		j = 0;
-		while (matrix[i][j])
+		col = 0;
+		while (program->map[row][col])
 		{
-			if (matrix[i][j] == 48 || matrix[i][j] == 49
-					|| matrix[i][j] == 'C' || matrix[i][j] == 'E'
-					|| matrix[i][j] == 'P')
-				j++;
+			if (program->map[row][col] == charset)
+				count++;
+			col++;
+		}
+		row++;
+	}
+	return (count);
+}
+
+static int	ft_check_type_of_components(t_program *program)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	while (program->map[row])
+	{
+		col = 0;
+		while (program->map[row][col])
+		{
+			if (program->map[row][col] == 48 || program->map[row][col] == 49
+					|| program->map[row][col] == 'C' || program->map[row][col] == 'E'
+					|| program->map[row][col] == 'P')
+				col++;
 			else
 				return (0);
 		}
-		i++;
+		row++;
 	}
 	return (1);
 }
 
-static int	ft_is_rectangular(char **matrix)
+static int	ft_is_rectangular(t_program *program)
 {
-	if (!ft_check_length(matrix) || !ft_check_width(matrix))
+	if (!ft_check_length(program->map) || !ft_check_width(program->map))
 		return (0);
 	return (1);
 }
 
-static int	ft_is_closed_by_walls(char **matrix)
+static int	ft_is_closed_by_walls(t_program *program)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 
-	i = 0;
-	while (matrix[0][i] || matrix[ft_count_rows(matrix) - 1][i])
+	row = 0;
+	while (program->map[0][row] || program->map[ft_count_rows(program->map) - 1][row])
 	{
-		if (matrix[0][i] != 49 || matrix[ft_count_rows(matrix) - 1][i] != 49)
+		if (program->map[0][row] != 49 || program->map[ft_count_rows(program->map) - 1][row] != 49)
 			return (0);
-		i++;
+		row++;
 	}
-	j = 0;
-	while (matrix[j] && (matrix[j][0] || matrix[j][ft_strlen(matrix[j]) - 1]))
+	col = 0;
+	while (program->map[col] && (program->map[col][0] || program->map[col][ft_strlen(program->map[col]) - 1]))
 	{
-		if (matrix[j][0] != 49 || matrix[j][ft_strlen(matrix[j]) - 1] != 49)
+		if (program->map[col][0] != 49 || program->map[col][ft_strlen(program->map[col]) - 1] != 49)
 			return (0);
-		j++;
+		col++;
 	}
 	return (1);
 }
 
-static char	**ft_get_matrix(char *argv)
+void	ft_parsing(t_program *program, char *argv)
 {
-	int		i;
-	int		map;
-	char	*line;
-	char	**matrix;
+	char	*map;
 
-	map = ft_open_fd(argv);
-	matrix = malloc(sizeof(char *) * (ft_count_lines(argv) + 1));
-	if (!matrix)
-		return (NULL);
-	i = 0;
-	line = get_next_line(map);
-	while (line)
-	{
-		matrix[i] = line;
-		line = get_next_line(map);
-		i++;
-	}
-	matrix[i] = 0;
-	close(map);
-	return (matrix);
-}
-
-char	**ft_parsing(char *argv)
-{
-	char	**matrix;
-
-	matrix = ft_get_matrix(argv);
-	if (!matrix)
-		return (NULL);
-	if (!(*matrix))
+	program->map = ft_get_map(program, argv);
+	if (!program->map)
+		exit(errno);
+	if (!program->map)
 	{
 		write(1, "Error\nEmpty map\n", 15);
 		exit(errno);
 	}
-	matrix = ft_delete_nl(matrix);
-	if(!ft_is_closed_by_walls(matrix))
-		ft_exit(matrix, "Map not closed by walls\n");
-	if (!ft_is_rectangular(matrix))
-		ft_exit(matrix, "Map is not rectangular\n");
-	if (!ft_check_type_of_components(matrix))
-		ft_exit(matrix, "Wrong component\n");
-	if (!ft_get_nb_of_components(matrix))
-		ft_exit(matrix, "Too many components\n");
-	return (matrix);
+	ft_delete_nl(program);
+	if(!ft_is_closed_by_walls(program))
+		ft_exit(program->map, "Map not closed by walls\n");
+	if (!ft_is_rectangular(program))
+		ft_exit(program->map, "Map is not rectangular\n");
+	if (!ft_check_type_of_components(program))
+		ft_exit(program->map, "Wrong component\n");
+	if (ft_count_components(program, 'C') < 1 || ft_count_components(program, 'P' != 1
+				|| ft_count_components(program, 'E') != 1))
+		ft_exit(program->map, "Wrong number of components\n");
 }
