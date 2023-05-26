@@ -6,7 +6,7 @@
 #    By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/05/23 20:12:52 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/05/26 17:49:17 by geraudtsers      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRCS				= main.c \
 					  flood_fill.c \
 					  mlx_init.c \
 					  mlx_graphic.c \
-					  mlx_assets.c
+					  mlx_assets.c \
+					  game.c
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 
@@ -64,3 +65,9 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+ecole: $(LIBFT) $(OBJS)
+					$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit  $(OBJS) $(LIBFT) -o $(NAME)
+
+local: $(LIBFT) $(OBJS)
+					$(CC) $(CFLAGS) -g -L /usr/X11/lib -lmlx -I /usr/X11/include -lX11 -lmlx -lXext $(OBJS) $(LIBFT) -o $(NAME)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graphic_management.c                               :+:      :+:    :+:   */
+/*   mlx_graphic.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:26:15 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/23 20:13:14 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/26 18:44:20 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ t_image	ft_new_sprite(void *mlx, char *path)
 	return (img);
 }
 
-void	ft_put_sprite_to_window(t_program *program, int x, int y, char *path)
+void	ft_put_asset_to_window(t_program *program, int x, int y, int index, char *path)
 {
-	if (path == NULL)
-		return ;
-	program->img = ft_new_sprite(program->mlx, path);
+	program->img[index] = ft_new_sprite(program->mlx, path);
+	program->img[index].position.x = x;
+	program->img[index].position.y = y;
 	mlx_put_image_to_window(program->mlx, program->window.reference,
-		program->img.reference, x, y);
+		program->img[index].reference, program->img[index].position.x,
+		program->img[index].position.y);
 }

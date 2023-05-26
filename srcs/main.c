@@ -6,7 +6,7 @@
 /*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/23 20:11:50 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:35:52 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int	main(int ac, char **av)
 	ft_get_player_position(clone);
 	ft_free_arr(clone);
 	ft_mlx_init(&program);
-	ft_print_map(&program.map);
-	ft_free_arr(&program);
+	ft_print_map(&program);
+	ft_free_arr(program.map);
 	//system("leaks so_long");
 	return (0);
 }

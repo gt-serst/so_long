@@ -3,68 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_assets.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:34:45 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/23 20:13:26 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/26 18:44:15 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_put_background_assets(t_program *program)
+void	ft_load_data(t_program *program)
+{
+	program->sprites[0].path = "xpm/tile5.xpm";
+	program->sprites[1].path = "xpm/lava_tile1.xpm";
+	program->sprites[2].path = "xpm/gold.xpm";
+	program->sprites[3].path = "xpm/lich-king.xpm";
+	program->sprites[4].path = "xpm/hearthstone.xpm";
+}
+
+void	ft_rendering(t_program *program)
 {
 	int	row;
 	int	col;
-	int	x;
-	int	y;
+	int	index;
 
 	row = 0;
-	y = 0;
+	index = 0;
 	while (program->map[row])
 	{
 		col = 0;
-		x = 0;
 		while (program->map[row][col])
 		{
-			if (program->map[row][col] == '1')
-				ft_put_sprite_to_window(program, x , y, "xpm/lava_tile1.xpm");
-			if (program->map[row][col] == '0' || program->map[row][col] == 'C'
-					|| program->map[row][col] == 'P' || program->map[row][col] == 'E')
-				ft_put_sprite_to_window(program, x, y, "xpm/tile5.xpm");
-			x += 64;
+			ft_identify_sprite(program, row, col, index);
 			col++;
+			index++;
 		}
-		y += 64;
 		row++;
 	}
 }
 
-void	ft_put_core_assets(t_program *program)
+void	ft_identify_sprite(t_program *program, int row, int col, int index)
 {
-	int	row;
-	int	col;
-	int	x;
-	int	y;
+	char	*path;
 
-	row = 0;
-	y = 0;
-	while (program->map[row])
+	switch (program->map[row][col])
 	{
-		col = 0;
-		x = 0;
-		while (program->map[row][col])
-		{
-			if (program->map[row][col] == 'C')
-				ft_put_sprite_to_window(program, x, y, "xpm/gold.xpm");
-			else if (program->map[row][col] == 'P')
-				ft_put_sprite_to_window(program, x, y, "xpm/lich-king.xpm");
-			else if (program->map[row][col] == 'E')
-				ft_put_sprite_to_window(program, x, y, "xpm/hearthstone.xpm");
-			x += 64;
-			col++;
-		}
-		y += 64;
-		row++;
+		case '0':
+			path = program->sprites[0].path;
+			break;
+		case '1':
+			path = program->sprites[1].path;
+			break;
+		case 'C':
+			path = program->sprites[2].path;
+			break;
+		case 'P':
+			path = program->sprites[3].path;
+			break;
+		case 'E':
+			path = program->sprites[4].path;
+			break;
+		default:
+			return ;
 	}
+	ft_put_asset_to_window(program, col * 64, row * 64, index, path);
 }
