@@ -6,13 +6,13 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:45:26 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/23 20:10:57 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/30 15:30:42 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static int	ft_count_components(t_program *program, char charset)
+int	ft_count_components(t_program *program, char charset)
 {
 	int	row;
 	int col;

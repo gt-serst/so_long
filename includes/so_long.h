@@ -6,7 +6,7 @@
 /*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/26 18:44:31 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/05/30 17:07:35 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,15 @@ typedef struct	s_image {
 }				t_image;
 
 typedef struct	s_map {
-	int	row;
 	int	col;
+	int	row;
 }				t_map;
+
+typedef struct	s_game {
+	t_vector	position;
+	int			collectibles;
+	int			inventory;
+}				t_game;
 
 typedef struct	s_program {
 	char		**map;
@@ -62,17 +68,15 @@ typedef struct	s_program {
 	t_image		img[SPRITES_NB];
 	t_image		sprites[SPRITES_NB];
 	t_image		sprite;
+	t_game		game;
 }				t_program;
-
-typedef struct	s_game {
-	t_map	player_position;
-}				t_game;
 
 /*				PARSING					*/
 void		ft_parsing(t_program *program, char *argv);
 int			ft_open_fd(char *argv);
 char		**ft_get_map(t_program *program, char *argv);
 void		ft_delete_nl(t_program *program);
+int			ft_count_components(t_program *program, char charset);
 int			ft_count_rows(char **map);
 int			ft_check_length(char **map);
 int			ft_check_width(char **map);

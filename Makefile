@@ -6,7 +6,7 @@
 #    By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/05/26 17:49:17 by geraudtsers      ###   ########.fr        #
+#    Updated: 2023/05/30 14:40:16 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RM					= rm -rf
 
 SRCS				= main.c \
 					  parsing.c \
-					  map_cleaning.c \
+					  cleaning.c \
 					  parsing_utils.c \
 					  flood_fill.c \
 					  mlx_init.c \
