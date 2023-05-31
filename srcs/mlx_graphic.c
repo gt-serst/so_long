@@ -3,22 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_graphic.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:26:15 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/30 13:48:09 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:10:10 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_window	ft_new_window(void *mlx, int widht, int height, char *name)
+int ft_close_window(t_program *program)
+{
+	ft_free_arr(program->map);
+	exit(0);
+}
+
+t_window	ft_new_window(t_program *program, int widht, int height, char *name)
 {
 	t_window	window;
 
-	window.reference = mlx_new_window(mlx, widht, height, name);
+	window.reference = mlx_new_window(program->mlx, widht, height, name);
 	window.size.x = widht;
 	window.size.y = height;
+	mlx_hook(window.reference, 17, 0, ft_close_window, program);
 	return (window);
 }
 
@@ -34,10 +41,10 @@ t_image	ft_new_sprite(void *mlx, char *path)
 
 void	ft_put_asset_to_window(t_program *program, int x, int y, int index, char *path)
 {
-	program->img[index] = ft_new_sprite(program->mlx, path);
-	program->img[index].position.x = x;
-	program->img[index].position.y = y;
+	program->sprite[index] = ft_new_sprite(program->mlx, path);
+	program->sprite[index].position.x = x;
+	program->sprite[index].position.y = y;
 	mlx_put_image_to_window(program->mlx, program->window.reference,
-		program->img[index].reference, program->img[index].position.x,
-		program->img[index].position.y);
+		program->sprite[index].reference, program->sprite[index].position.x,
+		program->sprite[index].position.y);
 }

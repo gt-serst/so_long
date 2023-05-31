@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:58 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/30 13:58:40 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:29:49 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void ft_recursive(char **map, int row, int col, int empty, int walls)
+static void	ft_recursive(char **map, int row, int col, int walls)
 {
 	int	n;
 	int	m;
@@ -24,10 +24,10 @@ static void ft_recursive(char **map, int row, int col, int empty, int walls)
 	else
 	{
 		map[row][col] = walls;
-		ft_recursive(map, row + 1, col, empty, walls);
-		ft_recursive(map, row - 1, col, empty, walls);
-		ft_recursive(map, row, col + 1, empty, walls);
-		ft_recursive(map, row, col - 1, empty, walls);
+		ft_recursive(map, row + 1, col, walls);
+		ft_recursive(map, row - 1, col, walls);
+		ft_recursive(map, row, col + 1, walls);
+		ft_recursive(map, row, col - 1, walls);
 	}
 }
 
@@ -35,7 +35,7 @@ static void	ft_flood_fill(char **map, int row, int col, int walls)
 {
 	if (map[row][col] == walls)
 		return ;
-	ft_recursive(map, row, col, 48, walls);
+	ft_recursive(map, row, col, walls);
 }
 
 static int	ft_get_exit_position(char **map)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+         #
+#    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/05/30 14:40:16 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/05/31 16:45:20 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRCS				= main.c \
 					  mlx_init.c \
 					  mlx_graphic.c \
 					  mlx_assets.c \
-					  game.c
+					  game.c \
+					  motion.c
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 
