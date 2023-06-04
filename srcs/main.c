@@ -6,20 +6,20 @@
 /*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/31 10:51:30 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/04 21:26:40 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_print_map(t_program *program)
+void	ft_print_map(char **map)
 {
 	int	row;
 
 	row = 0;
-	while (program->map[row])
+	while (map[row])
 	{
-		printf("%s\n", program->map[row]);
+		printf("%s\n", map[row]);
 		row++;
 	}
 }
@@ -46,7 +46,7 @@ void	ft_exit(char **map, char *msg)
 	exit(errno);
 }
 
-static void ft_check_extension(char *argv)
+static void	ft_check_extension(char *argv)
 {
 	while (argv && *argv != '.')
 		argv++;
@@ -91,7 +91,7 @@ int	main(int ac, char **av)
 	ft_get_player_position(clone);
 	ft_free_arr(clone);
 	ft_mlx_init(&program);
-	ft_print_map(&program);
+	ft_print_map(program.map);
 	ft_free_arr(program.map);
 	//system("leaks so_long");
 	return (0);

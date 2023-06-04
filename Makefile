@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
+#    By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/05/31 16:45:20 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/06/04 22:55:32 by geraudtsers      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,12 +45,12 @@ MLX_FLAGS_L			= -Imlx_linux -lXext -lX11 -lm -lz
 MLX_FLAGS_M			= -lX11 -lmlx -lXext
 
 .c.o:
-					$(CC) -c -I ./includes -Imlx -c $< -o $(<:.c=.o)
+					$(CC) $(C_FLAGS) -I ./includes -Imlx -c $< -o $(<:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-					$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit  $(OBJS) $(LIBFT) -o $(NAME)
+					$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(LIBFT):
 					make -C $(LIBFT_PATH) all
@@ -71,4 +71,4 @@ ecole: $(LIBFT) $(OBJS)
 					$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit  $(OBJS) $(LIBFT) -o $(NAME)
 
 local: $(LIBFT) $(OBJS)
-					$(CC) $(CFLAGS) -g -L /usr/X11/lib -lmlx -I /usr/X11/include -lX11 -lmlx -lXext $(OBJS) $(LIBFT) -o $(NAME)
+					$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -g -L /usr/X11/lib -lmlx -I /usr/X11/include -lX11 -lmlx -lXext -o $(NAME)

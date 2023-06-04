@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_graphic.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:26:15 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/31 15:10:10 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/04 22:12:18 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int ft_close_window(t_program *program)
+int	ft_close_window(t_program *program)
 {
 	ft_free_arr(program->map);
 	exit(0);
@@ -39,9 +39,10 @@ t_image	ft_new_sprite(void *mlx, char *path)
 	return (img);
 }
 
-void	ft_put_asset_to_window(t_program *program, int x, int y, int index, char *path)
+void	ft_put_asset_to_window(t_program *program, int x, int y, int index)
 {
-	program->sprite[index] = ft_new_sprite(program->mlx, path);
+	program->sprite[index] = ft_new_sprite(program->mlx,
+			program->img[index].path);
 	program->sprite[index].position.x = x;
 	program->sprite[index].position.y = y;
 	mlx_put_image_to_window(program->mlx, program->window.reference,

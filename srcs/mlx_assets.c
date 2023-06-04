@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_assets.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:34:45 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/31 15:20:09 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/04 22:10:53 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,15 @@ void	ft_identify_sprite(t_program *program, int row, int col)
 {
 	int	index;
 
-	switch (program->map[row][col])
-	{
-		case '0':
-			index = 0;
-			break;
-		case '1':
-			index = 1;
-			break;
-		case 'C':
-			index = 2;
-			break;
-		case 'P':
-			index = 3;
-			break;
-		case 'E':
-			index = 4;
-			break;
-		default:
-			return ;
-	}
-	ft_put_asset_to_window(program, col * 64, row * 64, index, program->img[index].path);
+	if (program->map[row][col] == '0')
+		index = 0;
+	else if (program->map[row][col] == '1')
+		index = 1;
+	else if (program->map[row][col] == 'C')
+		index = 2;
+	else if (program->map[row][col] == 'P')
+		index = 3;
+	else if (program->map[row][col] == 'E')
+		index = 4;
+	ft_put_asset_to_window(program, col * 64, row * 64, index);
 }

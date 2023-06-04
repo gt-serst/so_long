@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:47 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/30 15:25:08 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:45:48 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ int	ft_count_rows(char **map)
 	int	count_rows;
 
 	count_rows = 0;
-	while(map[count_rows])
+	while (map[count_rows])
 		count_rows++;
 	return (count_rows);
-
 }
 
 int	ft_check_length(char **map)

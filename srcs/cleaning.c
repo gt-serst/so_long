@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaning.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:17 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/05/30 13:47:20 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/04 21:56:35 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,45 +44,45 @@ static int	ft_count_strs(char *argv)
 	return (strs);
 }
 
-void	ft_delete_nl(t_program *program)
+char	**ft_delete_nl(char **map)
 {
 	int	row;
 	int	col;
 
 	row = 0;
-	col = 0;
-	while (program->map[row])
+	while (map[row])
 	{
 		col = 0;
-		while (program->map[row][col])
+		while (map[row][col])
 		{
-			if (program->map[row][col] == '\n')
-				program->map[row][col] = '\0';
+			if (map[row][col] == '\n')
+				map[row][col] = '\0';
 			col++;
 		}
 		row++;
 	}
+	return (map);
 }
 
-char	**ft_get_map(t_program *program, char *argv)
+char	**ft_get_map(char **map, char *argv)
 {
 	int		row;
 	int		fd;
 	char	*line;
 
 	fd = ft_open_fd(argv);
-	program->map = malloc(sizeof(char *) * (ft_count_strs(argv) + 1));
-	if (!program->map)
+	map = malloc(sizeof(char *) * (ft_count_strs(argv) + 1));
+	if (!map)
 		return (NULL);
 	row = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
-		program->map[row] = line;
+		map[row] = line;
 		line = get_next_line(fd);
 		row++;
 	}
-	program->map[row] = 0;
+	map[row] = 0;
 	close(fd);
-	return (program->map);
+	return (map);
 }
