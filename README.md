@@ -1,5 +1,6 @@
 # so_long
 # World of Warcraft : Wrath of the Lich King
+## Gain power by looting dark runes and bring the rules of the Undead Scourge back to Azeroth.
 <img width="944" alt="Screen Shot 2023-06-05 at 6 03 35 PM" src="https://github.com/gt-serst/so_long/assets/81758850/762d400d-fb83-47c5-b8f0-b1d170a80536">
 
 # parsing
