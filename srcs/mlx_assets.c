@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:34:45 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 13:31:37 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:20:33 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_load_data(t_program *program)
 {
-	program->img[0].path = "xpm/lava.xpm";
-	program->img[1].path = "xpm/wall.xpm";
-	program->img[2].path = "xpm/crystal.xpm";
-	program->img[3].path = "xpm/player.xpm";
-	program->img[4].path = "xpm/door.xpm";
+	program->img[0].path = "assets/xpm/lava.xpm";
+	program->img[1].path = "assets/xpm/wall.xpm";
+	program->img[2].path = "assets/xpm/crystal.xpm";
+	program->img[3].path = "assets/xpm/player.xpm";
+	program->img[4].path = "assets/xpm/door.xpm";
 }
 
 void	ft_rendering(t_program *program)
