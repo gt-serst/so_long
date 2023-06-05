@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaning.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:17 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/04 21:56:35 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/06/05 17:24:01 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_open_fd(char *argv)
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 	{
-		write(1, "Error\nFile error\n", 16);
+		ft_printf("Error\n%s\n", strerror(errno));
 		exit(errno);
 	}
 	return (fd);

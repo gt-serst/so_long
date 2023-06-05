@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 16:04:02 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:12:09 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,40 +56,16 @@ static void	ft_check_extension(char *argv)
 	}
 }
 
-char	**ft_create_clone(char **map)
-{
-	int		row;
-	char	**clone;
-
-	clone = malloc(sizeof(char *) * (ft_count_rows(map) + 1));
-	if (!clone)
-		return (NULL);
-	row = 0;
-	while (map[row])
-	{
-		clone[row] = ft_strdup(map[row]);
-		row++;
-	}
-	clone[row] = 0;
-	return (clone);
-}
-
 int	main(int ac, char **av)
 {
 	t_program	program;
-	char		**clone;
 
 	if (ac != 2)
 		return (1);
 	ft_check_extension(av[1]);
 	ft_parsing(&program, av[1]);
-	// clone = ft_clone(program.map);
-	// if (!clone)
-	// 	return (1);
-	ft_flood_fill(&program);
-	// ft_free_arr(clone);
+	ft_get_player_position(&program);
 	ft_mlx_init(&program);
-	ft_print_map(program.map);
 	ft_free_arr(program.map);
 	return (0);
 }

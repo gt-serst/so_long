@@ -6,4 +6,4 @@ The player's goal is to reach exit case after looting all the collectibles which
 # graphic management
 With MiniLibx, I can display and manage a window as well as perform keyboard and mouse interactions.
 # game management
-The player can move in four directions (up, down, right and left) thanks to the Z, S, Q and D keyboard letters.
+The player can move in four directions (up, down, right and left) thanks to the w, s, a and d keyboard letters.

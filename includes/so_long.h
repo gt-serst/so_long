@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 16:24:02 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:15:59 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
+#include <string.h>
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
@@ -76,8 +77,12 @@ int			ft_check_length(char **map);
 int			ft_check_width(char **map);
 
 /*				FLOOD FILL				*/
-void		ft_flood_fill(t_program *program);
-char		**ft_create_clone(char **map);
+void		ft_get_player_position(t_program *program);
+void		ft_ff_collectible(char **map, int row, int col, int walls);
+void		ft_ff_exit(char **map, int row, int col, int walls);
+int			ft_is_collectible_reached(char **map);
+int			ft_is_exit_reached(char **map);
+
 
 /*				MLX INIT				*/
 void		ft_mlx_init(t_program *program);

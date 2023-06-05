@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:04:46 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 15:06:09 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:33:15 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_loot_gold(t_program *program, t_game *game)
 void	ft_quit_game(t_program *program)
 {
 	program->game.m++;
-	ft_printf("%d\n", program->game.m);
+	ft_printf("%d\nWell done, another step forward for the Undead Scourge!\n", program->game.m);
 	ft_close_window(program);
 }
 

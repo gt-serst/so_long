@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:45:26 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 15:33:55 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:22:05 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,13 @@ void	ft_parsing(t_program *program, char *argv)
 {
 	program->map = ft_get_map(program->map, argv);
 	if (!program->map)
+	{
+		ft_printf("Malloc allocation failed");
 		exit(errno);
+	}
 	if (!program->map)
 	{
-		write(1, "Error\nEmpty map\n", 15);
+		ft_printf("Error\nEmpty map\n");
 		exit(errno);
 	}
 	program->map = ft_delete_nl(program->map);
@@ -102,9 +105,9 @@ void	ft_parsing(t_program *program, char *argv)
 	if (!ft_is_rectangular(program->map))
 		ft_exit(program->map, "Map is not rectangular\n");
 	if (!ft_check_type_of_components(program->map))
-		ft_exit(program->map, "Wrong component\n");
+		ft_exit(program->map, "Map contains wrong components\n");
 	if (ft_count_components(program->map, 'C') < 1
 		|| ft_count_components(program->map, 'P') != 1
-			|| ft_count_components(program->map, 'E') != 1)
-		ft_exit(program->map, "Wrong number of components\n");
+		|| ft_count_components(program->map, 'E') != 1)
+		ft_exit(program->map, "Map contains wrong number of components\n");
 }
