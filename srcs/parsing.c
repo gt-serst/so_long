@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:45:26 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/04 21:50:45 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/06/05 15:33:55 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	ft_parsing(t_program *program, char *argv)
 	if (!ft_check_type_of_components(program->map))
 		ft_exit(program->map, "Wrong component\n");
 	if (ft_count_components(program->map, 'C') < 1
-		|| ft_count_components(program->map, 'P' != 1
-			|| ft_count_components(program->map, 'E') != 1))
+		|| ft_count_components(program->map, 'P') != 1
+			|| ft_count_components(program->map, 'E') != 1)
 		ft_exit(program->map, "Wrong number of components\n");
 }

@@ -6,7 +6,7 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/06/05 12:32:07 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/06/05 15:28:50 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME				= so_long
 
 CC					= gcc
 
-CFLAGS				= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS				= -Wall -Wextra -Werror
 
 RM					= rm -rf
 

@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:04:46 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 13:36:36 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:06:09 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	ft_move_tile(t_program *program, t_game *game)
 	program->map[game->new.x / 64][game->new.y / 64] = 'P';
 	ft_update_player_position(program->map, game);
 	program->game.m++;
-	ft_putnbr_fd(program->game.m, 0);
-	write(0, "\n", 1);
+	ft_printf("%d\n", program->game.m);
 }
 
 void	ft_loot_gold(t_program *program, t_game *game)
@@ -37,8 +36,7 @@ void	ft_loot_gold(t_program *program, t_game *game)
 void	ft_quit_game(t_program *program)
 {
 	program->game.m++;
-	ft_putnbr_fd(program->game.m, 0);
-	write(0, "\n", 1);
+	ft_printf("%d\n", program->game.m);
 	ft_close_window(program);
 }
 

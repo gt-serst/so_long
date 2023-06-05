@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:26:15 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 13:37:38 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:28:44 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_close_window(t_program *program)
 {
 	ft_free_arr(program->map);
+	system("leaks so_long");
 	exit(0);
 }
 

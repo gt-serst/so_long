@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 10:06:08 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:04:02 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	ft_free_arr(char **arr)
 void	ft_exit(char **map, char *msg)
 {
 	ft_free_arr(map);
-	write(1, "Error\n", 6);
-	write(1, msg, ft_strlen(msg));
+	ft_printf("Error\n%s", msg);
+	system("leaks so_long");
 	exit(errno);
 }
 
@@ -51,13 +51,12 @@ static void	ft_check_extension(char *argv)
 		argv++;
 	if (!ft_strnstr(argv, ".ber", ft_strlen(argv)))
 	{
-		write(1, "Error\n", 6);
-		write(1, "Wrong map extension, expected .ber\n", 31);
+		ft_printf("Error\nWrong map extension, expected .ber\n");
 		exit(errno);
 	}
 }
 
-static char	**ft_clone(char **map)
+char	**ft_create_clone(char **map)
 {
 	int		row;
 	char	**clone;
@@ -84,11 +83,11 @@ int	main(int ac, char **av)
 		return (1);
 	ft_check_extension(av[1]);
 	ft_parsing(&program, av[1]);
-	clone = ft_clone(program.map);
-	if (!clone)
-		return (1);
-	ft_get_player_position(clone);
-	ft_free_arr(clone);
+	// clone = ft_clone(program.map);
+	// if (!clone)
+	// 	return (1);
+	ft_flood_fill(&program);
+	// ft_free_arr(clone);
 	ft_mlx_init(&program);
 	ft_print_map(program.map);
 	ft_free_arr(program.map);

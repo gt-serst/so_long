@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 13:02:34 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:24:02 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ int			ft_check_length(char **map);
 int			ft_check_width(char **map);
 
 /*				FLOOD FILL				*/
-void		ft_get_player_position(char **map);
+void		ft_flood_fill(t_program *program);
+char		**ft_create_clone(char **map);
 
 /*				MLX INIT				*/
 void		ft_mlx_init(t_program *program);
@@ -85,7 +86,6 @@ void		ft_mlx_init(t_program *program);
 t_window	ft_new_window(t_program *program, int width, int height, char *name);
 int			ft_close_window(t_program *program);
 t_image		ft_new_sprite(void *mlx, char *path);
-void	ft_display_background(t_program *program);
 void		ft_put_asset_to_window(t_program *program, int x, int y, int index);
 
 /*				MLX ASSETS				*/

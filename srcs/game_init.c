@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:01:50 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 13:09:35 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:27:53 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_update_player_position(char **map, t_game *game)
 	}
 }
 
-static int	ft_input(int key, t_program *program)
+static int	ft_user_input(int key, t_program *program)
 {
 	t_game	game;
 
@@ -64,5 +64,5 @@ void	ft_game_init(t_program *program)
 	program->game.c = ft_count_components(program->map, 'C');
 	program->game.coins = 0;
 	program->game.m = 0;
-	mlx_key_hook(program->window.reference, ft_input, program);
+	mlx_key_hook(program->window.reference, ft_user_input, program);
 }
