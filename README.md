@@ -1,9 +1,6 @@
 # so_long
 # World of Warcraft : Wrath of the Lich King
 <img width="944" alt="Screen Shot 2023-06-05 at 6 03 35 PM" src="https://github.com/gt-serst/so_long/assets/81758850/762d400d-fb83-47c5-b8f0-b1d170a80536">
-
-
-
 # parsing
 First, map parsing. The map must have a .ber extenssion, be closed by walls and rectangular, have at least one collectible and exactly one player and one exit. Finally, only 0 (empty space), 1 (wall), C (collectible), E (exit) and P (player) characters are allowed.
 # flood fill
