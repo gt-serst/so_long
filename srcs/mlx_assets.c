@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_assets.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:34:45 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/04 22:10:53 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/06/05 13:31:37 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_load_data(t_program *program)
 {
-	program->img[0].path = "xpm/tile5.xpm";
-	program->img[1].path = "xpm/lava_tile1.xpm";
-	program->img[2].path = "xpm/gold.xpm";
-	program->img[3].path = "xpm/lich-king.xpm";
-	program->img[4].path = "xpm/hearthstone.xpm";
+	program->img[0].path = "xpm/lava.xpm";
+	program->img[1].path = "xpm/wall.xpm";
+	program->img[2].path = "xpm/crystal.xpm";
+	program->img[3].path = "xpm/player.xpm";
+	program->img[4].path = "xpm/door.xpm";
 }
 
 void	ft_rendering(t_program *program)
@@ -41,17 +41,13 @@ void	ft_rendering(t_program *program)
 
 void	ft_identify_sprite(t_program *program, int row, int col)
 {
-	int	index;
-
-	if (program->map[row][col] == '0')
-		index = 0;
-	else if (program->map[row][col] == '1')
-		index = 1;
+	ft_put_asset_to_window(program, col * 64, row * 64, 0);
+	if (program->map[row][col] == '1')
+		ft_put_asset_to_window(program, col * 64, row * 64, 1);
 	else if (program->map[row][col] == 'C')
-		index = 2;
+		ft_put_asset_to_window(program, col * 64, row * 64, 2);
 	else if (program->map[row][col] == 'P')
-		index = 3;
+		ft_put_asset_to_window(program, col * 64, row * 64, 3);
 	else if (program->map[row][col] == 'E')
-		index = 4;
-	ft_put_asset_to_window(program, col * 64, row * 64, index);
+		ft_put_asset_to_window(program, col * 64, row * 64, 4);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/04 22:11:30 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/06/05 13:02:34 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 
-# define IMG_NB 5
+# define IMG_NB 6
 
 typedef enum e_sprite {
 	_emptyspace = 0,
@@ -48,7 +48,7 @@ typedef struct	s_image {
 }				t_image;
 
 typedef struct	s_game {
-	t_vector	position;
+	t_vector	effect;
 	t_vector	new;
 	t_vector	old;
 	int			c;
@@ -85,6 +85,7 @@ void		ft_mlx_init(t_program *program);
 t_window	ft_new_window(t_program *program, int width, int height, char *name);
 int			ft_close_window(t_program *program);
 t_image		ft_new_sprite(void *mlx, char *path);
+void	ft_display_background(t_program *program);
 void		ft_put_asset_to_window(t_program *program, int x, int y, int index);
 
 /*				MLX ASSETS				*/
@@ -94,6 +95,7 @@ void		ft_identify_sprite(t_program *program, int row, int col);
 
 /*				GAME					*/
 void		ft_game_init(t_program *program);
+void	ft_update_player_position(char **map, t_game *game);
 
 /*				MOTION					*/
 void		ft_motion_manager(t_program *program, t_game *game);
@@ -101,6 +103,11 @@ void		ft_forward_motion(t_program *program, t_game *game);
 void		ft_backward_motion(t_program *program, t_game *game);
 void		ft_right_motion(t_program *program, t_game *game);
 void		ft_left_motion(t_program *program, t_game *game);
+
+/*				MECHANICS				*/
+void	ft_move_tile(t_program *program, t_game *game);
+void	ft_loot_gold(t_program *program, t_game *game);
+void	ft_quit_game(t_program *program);
 
 /*				CLEANING DATA			*/
 void		ft_free_arr(char **arr);

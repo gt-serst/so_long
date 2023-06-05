@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/04 21:26:40 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/06/05 10:06:08 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	ft_exit(char **map, char *msg)
 	ft_free_arr(map);
 	write(1, "Error\n", 6);
 	write(1, msg, ft_strlen(msg));
-	//system("leaks so_long");
 	exit(errno);
 }
 
@@ -93,6 +92,5 @@ int	main(int ac, char **av)
 	ft_mlx_init(&program);
 	ft_print_map(program.map);
 	ft_free_arr(program.map);
-	//system("leaks so_long");
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_graphic.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:26:15 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/04 22:12:18 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/06/05 13:37:38 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,16 @@ void	ft_put_asset_to_window(t_program *program, int x, int y, int index)
 {
 	program->sprite[index] = ft_new_sprite(program->mlx,
 			program->img[index].path);
-	program->sprite[index].position.x = x;
-	program->sprite[index].position.y = y;
+	if (index == 2)
+	{
+		program->sprite[index].position.x = x + 16;
+		program->sprite[index].position.y = y + 16;
+	}
+	else
+	{
+		program->sprite[index].position.x = x;
+		program->sprite[index].position.y = y;
+	}
 	mlx_put_image_to_window(program->mlx, program->window.reference,
 		program->sprite[index].reference, program->sprite[index].position.x,
 		program->sprite[index].position.y);
