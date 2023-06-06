@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/06 11:29:37 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:24:25 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <errno.h>
 # include <string.h>
 # include "../libft/libft.h"
-# include "../minilibx_opengl/mlx.h"
+# include <mlx.h>
 
 # define IMG_NB 6
 
