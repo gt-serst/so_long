@@ -6,23 +6,11 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 17:12:09 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:27:43 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	ft_print_map(char **map)
-{
-	int	row;
-
-	row = 0;
-	while (map[row])
-	{
-		printf("%s\n", map[row]);
-		row++;
-	}
-}
 
 void	ft_free_arr(char **arr)
 {
@@ -41,7 +29,6 @@ void	ft_exit(char **map, char *msg)
 {
 	ft_free_arr(map);
 	ft_printf("Error\n%s", msg);
-	system("leaks so_long");
 	exit(errno);
 }
 

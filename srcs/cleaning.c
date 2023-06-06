@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:17 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 17:24:01 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:30:40 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	ft_count_strs(char *argv)
 	return (strs);
 }
 
-char	**ft_delete_nl(char **map)
+char	**ft_remove_nl(char **map)
 {
 	int	row;
 	int	col;

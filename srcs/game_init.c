@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:01:50 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 15:27:53 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:16:48 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,16 @@ static int	ft_user_input(int key, t_program *program)
 	t_game	game;
 
 	ft_update_player_position(program->map, &game);
-	if (key == 124 || key == 65363)
+	if (key == 124)
 		ft_right_motion(program, &game);
-	if (key == 123 || key == 65361)
+	if (key == 123)
 		ft_left_motion(program, &game);
-	if (key == 125 || key == 65364)
+	if (key == 125)
 		ft_backward_motion(program, &game);
-	if (key == 126 || key == 65362)
+	if (key == 126)
 		ft_forward_motion(program, &game);
-	if (key == 53 || key == 65307)
-	{
-		mlx_destroy_window(program->mlx, program->window.reference);
+	if (key == 53)
 		ft_close_window(program);
-	}
 	mlx_put_image_to_window(program->mlx, program->window.reference,
 		program->sprite[3].reference, game.effect.y,
 		game.effect.x);

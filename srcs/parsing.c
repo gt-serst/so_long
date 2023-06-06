@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:45:26 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/05 17:22:05 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:33:39 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,19 @@ static int	ft_is_closed_by_walls(char **map)
 	int	row;
 	int	col;
 
-	row = 0;
-	while (map[0][row] || map[ft_count_rows(map) - 1][row])
-	{
-		if (map[0][row] != 49 || map[ft_count_rows(map) - 1][row] != 49)
-			return (0);
-		row++;
-	}
 	col = 0;
-	while (map[col] && (map[col][0] || map[col][ft_strlen(map[col]) - 1]))
+	while (map[0][col] || map[ft_count_rows(map) - 1][col])
 	{
-		if (map[col][0] != 49 || map[col][ft_strlen(map[col]) - 1] != 49)
+		if (map[0][col] != 49 || map[ft_count_rows(map) - 1][col] != 49)
 			return (0);
 		col++;
+	}
+	row = 0;
+	while (map[row] && (map[row][0] || map[row][ft_strlen(map[row]) - 1]))
+	{
+		if (map[row][0] != 49 || map[row][ft_strlen(map[row]) - 1] != 49)
+			return (0);
+		row++;
 	}
 	return (1);
 }
@@ -91,15 +91,15 @@ void	ft_parsing(t_program *program, char *argv)
 	program->map = ft_get_map(program->map, argv);
 	if (!program->map)
 	{
-		ft_printf("Malloc allocation failed");
+		ft_printf("Malloc allocation failed\n");
 		exit(errno);
 	}
-	if (!program->map)
+	if (!(*program->map))
 	{
 		ft_printf("Error\nEmpty map\n");
 		exit(errno);
 	}
-	program->map = ft_delete_nl(program->map);
+	program->map = ft_remove_nl(program->map);
 	if (!ft_is_closed_by_walls(program->map))
 		ft_exit(program->map, "Map not closed by walls\n");
 	if (!ft_is_rectangular(program->map))
