@@ -6,7 +6,7 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/06/05 17:54:27 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/06/07 11:23:24 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS				= $(addprefix $(SRCS_DIR),\
 					parsing_utils.c \
 					flood_fill.c \
 					flood_fill_utils.c \
-					mlx_init.c \
+					display_init.c \
 					mlx_graphic.c \
 					mlx_assets.c \
 					game_init.c \

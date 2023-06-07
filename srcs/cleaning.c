@@ -6,13 +6,13 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:17 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/06 10:30:40 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:04:57 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	ft_open_fd(char *argv)
+int	open_fd(char *argv)
 {
 	int	fd;
 
@@ -25,13 +25,13 @@ int	ft_open_fd(char *argv)
 	return (fd);
 }
 
-static int	ft_count_strs(char *argv)
+static int	count_strs(char *argv)
 {
 	int		fd;
 	int		strs;
 	char	*line;
 
-	fd = ft_open_fd(argv);
+	fd = open_fd(argv);
 	strs = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -44,7 +44,7 @@ static int	ft_count_strs(char *argv)
 	return (strs);
 }
 
-char	**ft_remove_nl(char **map)
+char	**remove_nl(char **map)
 {
 	int	row;
 	int	col;
@@ -64,14 +64,14 @@ char	**ft_remove_nl(char **map)
 	return (map);
 }
 
-char	**ft_get_map(char **map, char *argv)
+char	**get_map(char **map, char *argv)
 {
 	int		row;
 	int		fd;
 	char	*line;
 
-	fd = ft_open_fd(argv);
-	map = malloc(sizeof(char *) * (ft_count_strs(argv) + 1));
+	fd = open_fd(argv);
+	map = malloc(sizeof(char *) * (count_strs(argv) + 1));
 	if (!map)
 		return (NULL);
 	row = 0;

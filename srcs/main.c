@@ -6,13 +6,13 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/06 11:27:43 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:25:12 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_free_arr(char **arr)
+void	free_arr(char **arr)
 {
 	int	row;
 
@@ -25,14 +25,14 @@ void	ft_free_arr(char **arr)
 	free(arr);
 }
 
-void	ft_exit(char **map, char *msg)
+void	exit_msg(char **map, char *msg)
 {
-	ft_free_arr(map);
+	free_arr(map);
 	ft_printf("Error\n%s", msg);
 	exit(errno);
 }
 
-static void	ft_check_extension(char *argv)
+static void	check_extension(char *argv)
 {
 	while (argv && *argv != '.')
 		argv++;
@@ -49,10 +49,10 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (1);
-	ft_check_extension(av[1]);
-	ft_parsing(&program, av[1]);
-	ft_get_player_position(&program);
-	ft_mlx_init(&program);
-	ft_free_arr(program.map);
+	check_extension(av[1]);
+	parsing(&program, av[1]);
+	get_player_position(&program);
+	display_init(&program);
+	free_arr(program.map);
 	return (0);
 }

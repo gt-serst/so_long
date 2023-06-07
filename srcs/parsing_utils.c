@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:47 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/04 20:45:48 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/06/07 11:12:21 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	ft_count_rows(char **map)
+int	count_rows(char **map)
 {
 	int	count_rows;
 
@@ -22,7 +22,7 @@ int	ft_count_rows(char **map)
 	return (count_rows);
 }
 
-int	ft_check_length(char **map)
+int	check_length(char **map)
 {
 	int	row;
 	int	col;
@@ -42,13 +42,13 @@ int	ft_check_length(char **map)
 	return (1);
 }
 
-int	ft_check_width(char **map)
+int	check_width(char **map)
 {
 	int	row;
 	int	col;
 	int	width;
 
-	width = ft_count_rows(map);
+	width = count_rows(map);
 	col = 0;
 	while (map[0][col])
 	{

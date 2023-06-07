@@ -6,13 +6,13 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:45:26 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/06 10:33:39 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:13:44 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	ft_count_components(char **map, char charset)
+int	count_components(char **map, char charset)
 {
 	int	row;
 	int	col;
@@ -34,7 +34,7 @@ int	ft_count_components(char **map, char charset)
 	return (count);
 }
 
-static int	ft_check_type_of_components(char **map)
+static int	check_type_of_components(char **map)
 {
 	int	row;
 	int	col;
@@ -57,22 +57,22 @@ static int	ft_check_type_of_components(char **map)
 	return (1);
 }
 
-static int	ft_is_rectangular(char **map)
+static int	is_rectangular(char **map)
 {
-	if (!ft_check_length(map) || !ft_check_width(map))
+	if (!check_length(map) || !check_width(map))
 		return (0);
 	return (1);
 }
 
-static int	ft_is_closed_by_walls(char **map)
+static int	is_closed_by_walls(char **map)
 {
 	int	row;
 	int	col;
 
 	col = 0;
-	while (map[0][col] || map[ft_count_rows(map) - 1][col])
+	while (map[0][col] || map[count_rows(map) - 1][col])
 	{
-		if (map[0][col] != 49 || map[ft_count_rows(map) - 1][col] != 49)
+		if (map[0][col] != 49 || map[count_rows(map) - 1][col] != 49)
 			return (0);
 		col++;
 	}
@@ -86,9 +86,9 @@ static int	ft_is_closed_by_walls(char **map)
 	return (1);
 }
 
-void	ft_parsing(t_program *program, char *argv)
+void	parsing(t_program *program, char *argv)
 {
-	program->map = ft_get_map(program->map, argv);
+	program->map = get_map(program->map, argv);
 	if (!program->map)
 	{
 		ft_printf("Malloc allocation failed\n");
@@ -99,15 +99,15 @@ void	ft_parsing(t_program *program, char *argv)
 		ft_printf("Error\nEmpty map\n");
 		exit(errno);
 	}
-	program->map = ft_remove_nl(program->map);
-	if (!ft_is_closed_by_walls(program->map))
-		ft_exit(program->map, "Map not closed by walls\n");
-	if (!ft_is_rectangular(program->map))
-		ft_exit(program->map, "Map is not rectangular\n");
-	if (!ft_check_type_of_components(program->map))
-		ft_exit(program->map, "Map contains wrong components\n");
-	if (ft_count_components(program->map, 'C') < 1
-		|| ft_count_components(program->map, 'P') != 1
-		|| ft_count_components(program->map, 'E') != 1)
-		ft_exit(program->map, "Map contains wrong number of components\n");
+	program->map = remove_nl(program->map);
+	if (!is_closed_by_walls(program->map))
+		exit_msg(program->map, "Map not closed by walls\n");
+	if (!is_rectangular(program->map))
+		exit_msg(program->map, "Map is not rectangular\n");
+	if (!check_type_of_components(program->map))
+		exit_msg(program->map, "Map contains wrong components\n");
+	if (count_components(program->map, 'C') < 1
+		|| count_components(program->map, 'P') != 1
+		|| count_components(program->map, 'E') != 1)
+		exit_msg(program->map, "Map contains wrong number of components\n");
 }

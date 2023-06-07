@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/06 15:24:25 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:24:43 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,57 +62,57 @@ typedef struct s_program {
 }				t_program;
 
 /*				PARSING					*/
-void		ft_parsing(t_program *program, char *argv);
-int			ft_open_fd(char *argv);
-char		**ft_get_map(char **map, char *argv);
-char		**ft_remove_nl(char **map);
-int			ft_count_components(char **map, char charset);
-int			ft_count_rows(char **map);
-int			ft_check_length(char **map);
-int			ft_check_width(char **map);
+void		parsing(t_program *program, char *argv);
+int			open_fd(char *argv);
+char		**get_map(char **map, char *argv);
+char		**remove_nl(char **map);
+int			count_components(char **map, char charset);
+int			count_rows(char **map);
+int			check_length(char **map);
+int			check_width(char **map);
 
 /*				FLOOD FILL				*/
-void		ft_get_player_position(t_program *program);
-void		ft_ff_collectible(char **map, int row, int col, int walls);
-void		ft_ff_exit(char **map, int row, int col, int walls);
-int			ft_is_collectible_reached(char **map);
-int			ft_is_exit_reached(char **map);
+void		get_player_position(t_program *program);
+void		ff_collectible(char **map, int row, int col, int walls);
+void		ff_exit(char **map, int row, int col, int walls);
+int			is_collectible_reached(char **map);
+int			is_exit_reached(char **map);
 
-/*				MLX INIT				*/
-void		ft_mlx_init(t_program *program);
+/*				MLX INIT					*/
+void		display_init(t_program *program);
 
 /*				MLX GRAPHIC				*/
-t_window	ft_new_window(t_program *program, int width,
+t_window	new_window(t_program *program, int width,
 				int height, char *name);
-int			ft_close_window(t_program *program);
-t_image		ft_new_sprite(t_program *program, void *mlx, char *path);
-void		ft_put_asset_to_window(t_program *program, int x, int y, int index);
+int			close_window(t_program *program);
+t_image		new_sprite(t_program *program, void *mlx, char *path);
+void		put_asset_to_window(t_program *program, int x, int y, int index);
 
 /*				MLX ASSETS				*/
-void		ft_load_data(t_program *program);
-void		ft_rendering(t_program *program);
-void		ft_identify_sprite(t_program *program, int row, int col);
+void		load_data(t_program *program);
+void		rendering(t_program *program);
+void		identify_sprite(t_program *program, int row, int col);
 
-/*				GAME INIT					*/
-void		ft_game_init(t_program *program);
-void		ft_update_player_position(char **map, t_game *game);
+/*				GAME INIT				*/
+void		game_init(t_program *program);
+void		update_player_position(char **map, t_game *game);
 
 /*				MOTION					*/
-void		ft_motion_manager(t_program *program, t_game *game);
-void		ft_forward_motion(t_program *program, t_game *game);
-void		ft_backward_motion(t_program *program, t_game *game);
-void		ft_right_motion(t_program *program, t_game *game);
-void		ft_left_motion(t_program *program, t_game *game);
+void		motion_manager(t_program *program, t_game *game);
+void		forward_motion(t_program *program, t_game *game);
+void		backward_motion(t_program *program, t_game *game);
+void		right_motion(t_program *program, t_game *game);
+void		left_motion(t_program *program, t_game *game);
 
 /*				MECHANICS				*/
-void		ft_move_to_next_tile(t_program *program, t_game *game);
-void		ft_loot_gold(t_program *program, t_game *game);
-void		ft_quit_game(t_program *program);
+void		move_to_next_tile(t_program *program, t_game *game);
+void		loot_gold(t_program *program, t_game *game);
+void		quit_game(t_program *program);
 
 /*				CLEANING DATA			*/
-void		ft_free_arr(char **arr);
+void		free_arr(char **arr);
 
 /*				ERROR MANAGEMENT		*/
-void		ft_exit(char **map, char *msg);
+void		exit_msg(char **map, char *msg);
 
 #endif

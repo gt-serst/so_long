@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_init.c                                         :+:      :+:    :+:   */
+/*   display_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 13:26:18 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/06 10:49:02 by gt-serst         ###   ########.fr       */
+/*   Created: 2023/06/07 11:17:38 by gt-serst          #+#    #+#             */
+/*   Updated: 2023/06/07 11:24:29 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_mlx_init(t_program *program)
+void	display_init(t_program *program)
 {
 	program->mlx = mlx_init();
 	if (program->mlx == NULL)
-		ft_exit(program->map, "Mlx error\n");
-	program->window = ft_new_window(program, ft_strlen(program->map[0]) * 64,
-			ft_count_rows(program->map) * 64, "Wrath of the Lich King");
-	ft_load_data(program);
-	ft_rendering(program);
-	ft_game_init(program);
+		exit_msg(program->map, "Mlx error\n");
+	program->window = new_window(program, ft_strlen(program->map[0]) * 64,
+			count_rows(program->map) * 64, "Wrath of the Lich King");
+	load_data(program);
+	rendering(program);
+	game_init(program);
 	mlx_loop(program->mlx);
 }
