@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:21:50 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/07 11:25:40 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/12 11:16:01 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ void	game_init(t_program *program)
 	program->game.c = count_components(program->map, 'C');
 	program->game.coins = 0;
 	program->game.m = 0;
-	mlx_key_hook(program->window.reference, user_input, program);
+	mlx_hook(program->window.reference, 2, (1L<<0), user_input, program);
 }

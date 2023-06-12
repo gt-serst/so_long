@@ -6,7 +6,7 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/06/07 11:23:24 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/06/12 10:56:43 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,12 +40,12 @@ LIBFT_DIR			= ./libft
 
 LIBFT				= $(LIBFT_DIR)/libft.a
 
-all: $(NAME)
+all: ${NAME}
 
-$(NAME): $(LIBFT)
+${NAME}: ${LIBFT}
 					$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
-$(LIBFT):
+${LIBFT}:
 					make -C $(LIBFT_DIR) all
 
 clean:
