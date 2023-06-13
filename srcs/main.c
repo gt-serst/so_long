@@ -6,11 +6,23 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/13 15:28:03 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 00:19:43 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	print_map(char **map)
+{
+	int i;
+
+	i = 0;
+	while (map[i])
+	{
+		ft_printf("%s\n", map[i]);
+		i++;
+	}
+}
 
 void	free_arr(char **arr)
 {
@@ -54,7 +66,7 @@ int	main(int ac, char **av)
 	program.map = NULL;
 	parsing(&program, av[1]);
 	get_player_position(&program);
-	display_init(&program);
+	game_init(&program);
 	free_arr(program.map);
-	return (0);
+	return (EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:47 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/13 15:14:26 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/13 22:41:03 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,42 +22,44 @@ int	count_rows(char **map)
 	return (count_rows);
 }
 
-int	check_length(char **map)
-{
-	int	row;
-	int	col;
-	int	length;
-
-	length = ft_strlen(map[0]);
-	row = 0;
-	while (map[row])
-	{
-		col = 0;
-		while (map[row][col])
-			col++;
-		if (length != col)
-			return (0);
-		row++;
-	}
-	return (1);
-}
-
-int	check_width(char **map)
+int	check_width(t_program *program)
 {
 	int	row;
 	int	col;
 	int	width;
 
-	width = count_rows(map);
+	width = ft_strlen(program->map[0]);
+	row = 0;
+	while (program->map[row])
+	{
+		col = 0;
+		while (program->map[row][col])
+			col++;
+		if (width != col)
+			return (0);
+		row++;
+	}
+	program->game.map_width = col;
+	return (1);
+}
+
+int	check_height(t_program *program)
+{
+	int	row;
+	int	col;
+	int	height;
+
+	height = count_rows(program->map);
 	col = 0;
-	while (map[0][col])
+	while (program->map[0][col])
 	{
 		row = 0;
-		while (map[row])
+		while (program->map[row])
 			row++;
-		if (width != row)
+		if (height != row)
 			return (0);
 		col++;
 	}
+	program->game.map_height = row;
 	return (1);
 }

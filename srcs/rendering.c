@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_assets.c                                       :+:      :+:    :+:   */
+/*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:34:45 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/13 15:40:53 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 00:39:26 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
 /*
 void	load_data(t_program *program)
 {
@@ -42,13 +43,14 @@ void	rendering(t_program *program)
 
 void	identify_sprite(t_program *program, int row, int col)
 {
-	put_asset_to_window(program, col * 64, row * 64, "assets/xpm/lava.xpm");
-	if (program->map[row][col] == '1')
-		put_asset_to_window(program, col * 64, row * 64, "assets/xpm/wall.xpm");
+	if (program->map[row][col] == '0')
+		put_sprite_to_window(program, program->empty, col, row);
+	else if (program->map[row][col] == '1')
+		put_sprite_to_window(program, program->wall, col, row);
 	else if (program->map[row][col] == 'C')
-		put_asset_to_window(program, col * 64, row * 64, "assets/xpm/crystal.xpm");
+		put_sprite_to_window(program, program->coins, col, row);
 	else if (program->map[row][col] == 'P')
-		put_asset_to_window(program, col * 64, row * 64, "assets/xpm/player.xpm");
+		put_sprite_to_window(program, program->player, col, row);
 	else if (program->map[row][col] == 'E')
-		put_asset_to_window(program, col * 64, row * 64, "assets/xpm/door.xpm");
+		put_sprite_to_window(program, program->exit, col, row);
 }

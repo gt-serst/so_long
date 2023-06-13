@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:04:46 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/13 15:46:17 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/13 23:53:24 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 void	action(t_program *program, t_game *game)
 {
 	program->map[game->old.x / 64][game->old.y / 64] = '0';
+/*
 	mlx_destroy_image(program->mlx, program->sprite[game->old.y]
 		[game->old.x].reference);
+*/
 /*
 	mlx_put_image_to_window(program->mlx, program->window.reference,
 		program->sprite[0].reference, game->old.y,
@@ -24,8 +26,8 @@ void	action(t_program *program, t_game *game)
 */
 	program->map[game->new.x / 64][game->new.y / 64] = 'P';
 	update_player_position(program->map, game);
-	program->game.m++;
-	ft_printf("%d\n", program->game.m);
+	program->game.movements_counter++;
+	ft_printf("%d\n", program->game.movements_counter);
 }
 
 /*
@@ -55,7 +57,7 @@ void	motion_manager(t_program *program, t_game *game)
 */
 	if (program->map[game->new.x / 64][game->new.y / 64] == 'C')
 	{
-		program->game.coins++;
+		program->game.coins_counter++;
 /*
 		mlx_put_image_to_window(program->mlx, program->window.reference,
 			program->sprite[0].reference, game->new.y,
@@ -64,9 +66,9 @@ void	motion_manager(t_program *program, t_game *game)
 	}
 	else if (program->map[game->new.x / 64][game->new.y / 64] == 'E')
 	{
-		program->game.m++;
+		program->game.movements_counter++;
 		ft_printf("%d\nWell done, another step forward for the Undead Scourge!\n",
-		program->game.m);
+		program->game.movements_counter);
 		close_window(program);
 	}
 	action(program, game);

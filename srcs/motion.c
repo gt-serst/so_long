@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:37:28 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/07 11:12:06 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/13 22:55:07 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	is_walkable(t_program *program, char c)
 {
 	if (c == '0' || c == 'C'
-		|| (c == 'E' && (program->game.c == program->game.coins)))
+		|| (c == 'E' && (program->game.coins == program->game.coins_counter)))
 		return (1);
 	else
 		return (0);

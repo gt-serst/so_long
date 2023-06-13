@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_init.c                                        :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:21:50 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/13 15:47:54 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/13 23:54:29 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	update_player_position(char **map, t_game *game)
 	}
 }
 
-static int	user_input(int key, t_program *program)
+int	user_input(int key, t_program *program)
 {
 	t_game	game;
 
@@ -50,12 +50,14 @@ static int	user_input(int key, t_program *program)
 		forward_motion(program, &game);
 	if (key == 53)
 		close_window(program);
+/*
 	mlx_put_image_to_window(program->mlx, program->window.reference,
 		program->sprite[game.old.y][game.old.x].reference, game.effect.y,
 		game.effect.x);
+*/
 	return (0);
 }
-
+/*
 void	game_init(t_program *program)
 {
 	program->game.c = count_components(program->map, 'C');
@@ -63,3 +65,4 @@ void	game_init(t_program *program)
 	program->game.m = 0;
 	mlx_hook(program->window.reference, 2, (1L << 0), user_input, program);
 }
+*/
