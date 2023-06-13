@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/07 11:25:12 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:28:03 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	free_arr(char **arr)
 
 void	exit_msg(char **map, char *msg)
 {
-	free_arr(map);
+	if (map)
+		free_arr(map);
 	ft_printf("Error\n%s", msg);
 	exit(errno);
 }
@@ -50,6 +51,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (1);
 	check_extension(av[1]);
+	program.map = NULL;
 	parsing(&program, av[1]);
 	get_player_position(&program);
 	display_init(&program);

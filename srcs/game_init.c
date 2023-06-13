@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:21:50 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/12 11:21:33 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:47:54 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	user_input(int key, t_program *program)
 	if (key == 53)
 		close_window(program);
 	mlx_put_image_to_window(program->mlx, program->window.reference,
-		program->sprite[3].reference, game.effect.y,
+		program->sprite[game.old.y][game.old.x].reference, game.effect.y,
 		game.effect.x);
 	return (0);
 }

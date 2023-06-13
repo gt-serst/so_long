@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/07 11:24:43 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:41:02 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ typedef struct s_program {
 	char		**map;
 	void		*mlx;
 	t_window	window;
-	t_image		img[IMG_NB];
-	t_image		sprite[IMG_NB];
+	t_image		**img;
+	t_image		**sprite;
 	t_game		game;
 }				t_program;
 
@@ -86,7 +86,7 @@ t_window	new_window(t_program *program, int width,
 				int height, char *name);
 int			close_window(t_program *program);
 t_image		new_sprite(t_program *program, void *mlx, char *path);
-void		put_asset_to_window(t_program *program, int x, int y, int index);
+void		put_asset_to_window(t_program *program, int x, int y, char *path);
 
 /*				MLX ASSETS				*/
 void		load_data(t_program *program);

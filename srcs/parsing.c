@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:45:26 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/07 12:09:12 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:00:10 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,6 @@ void	parsing(t_program *program, char *argv)
 	if (!program->map)
 	{
 		ft_printf("Malloc allocation failed\n");
-		exit(errno);
-	}
-	if (!(*program->map))
-	{
-		ft_printf("Error\nEmpty map\n");
 		exit(errno);
 	}
 	program->map = remove_nl(program->map);

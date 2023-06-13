@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:17 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/07 11:04:57 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:28:57 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,14 @@ static int	count_strs(char *argv)
 	char	*line;
 
 	fd = open_fd(argv);
-	strs = 0;
+	line = get_next_line(fd);
+	if (!line || line[0] == '\n')
+	{
+		close(fd);
+		return (0);
+	}
+	strs = 1;
+	free(line);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -69,12 +76,16 @@ char	**get_map(char **map, char *argv)
 	int		row;
 	int		fd;
 	char	*line;
+	int		strs;
 
-	fd = open_fd(argv);
-	map = malloc(sizeof(char *) * (count_strs(argv) + 1));
+	strs = count_strs(argv);
+	if (!strs)
+		exit_msg(map, "Empty map\n");
+	map = malloc(sizeof(char *) * (strs + 1));
 	if (!map)
 		return (NULL);
 	row = 0;
+	fd = open_fd(argv);
 	line = get_next_line(fd);
 	while (line)
 	{

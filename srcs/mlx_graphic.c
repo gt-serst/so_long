@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:26:15 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/07 11:24:33 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:49:34 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,20 @@ t_image	new_sprite(t_program *program, void *mlx, char *path)
 	return (img);
 }
 
-void	put_asset_to_window(t_program *program, int x, int y, int index)
+void	put_asset_to_window(t_program *program, int x, int y, char *path)
 {
-	program->sprite[index] = new_sprite(program, program->mlx,
-			program->img[index].path);
-	if (index == 2)
+	program->sprite[x][y] = new_sprite(program, program->mlx, path);
+	if (ft_strncmp(path, "assets/xpm/crystal.xpm", ft_strlen(path)))
 	{
-		program->sprite[index].position.x = x + 16;
-		program->sprite[index].position.y = y + 16;
+		program->sprite[x][y].position.x = x + 16;
+		program->sprite[x][y].position.y = y + 16;
 	}
 	else
 	{
-		program->sprite[index].position.x = x;
-		program->sprite[index].position.y = y;
+		program->sprite[x][y].position.x = x;
+		program->sprite[x][y].position.y = y;
 	}
 	mlx_put_image_to_window(program->mlx, program->window.reference,
-		program->sprite[index].reference, program->sprite[index].position.x,
-		program->sprite[index].position.y);
+		program->sprite[x][y].reference, program->sprite[x][y].position.x,
+		program->sprite[x][y].position.y);
 }
