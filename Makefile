@@ -6,7 +6,7 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/06/14 00:11:43 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/06/13 15:24:16 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,55 +14,46 @@ NAME				= so_long
 
 CC					= gcc
 
-CFLAGS				= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS				= -Wall -Wextra -Werror
 
 RM					= rm -rf
 
-SRCS				= main.c \
+# SRCS
+SRCS				= $(addprefix $(SRCS_DIR),\
+					main.c \
 					parsing.c \
 					cleaning.c \
 					parsing_utils.c \
 					flood_fill.c \
 					flood_fill_utils.c \
-					init.c \
+					display_init.c \
 					mlx_graphic.c \
-					rendering.c \
-					game.c \
+					mlx_assets.c \
+					game_init.c \
 					motion.c \
-					mechanics.c
+					mechanics.c)
 
-OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
+SRCS_DIR			= ./srcs/
 
 # LIBFT
-LIBFT_PATH			= ./libft
+LIBFT_DIR			= ./libft
 
-LIBFT				= $(LIBFT_PATH)/libft.a
+LIBFT				= $(LIBFT_DIR)/libft.a
 
-# MLX
-MLX_L				= -Lmlx_linux -lmlx_Linux -L /usr/local/lib
-MLX_M				= -L /usr/local/lib
-MLX_INCLUDES_L		= -I /usr/local/include -Imlx_linux
-MLX_INCLUDES_M		= -I /usr/local/include -Imlx
-MLX_FLAGS_L			= -Imlx_linux -lXext -lX11 -lm -lz
-MLX_FLAGS_M			= -lmlx -framework OpenGL -framework AppKit
+all: ${NAME}
 
-.c.o:
-					$(CC) -c -I ./includes $(MLX_INCLUDES_L) -c $< -o $(<:.c=.o)
+${NAME}: ${LIBFT}
+					$(CC) $(CFLAGS) $(SRCS) $(LIBFT) \
+					-lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
-all: $(NAME)
-
-$(NAME): $(LIBFT) $(OBJS)
-					$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_L) $(MLX_FLAGS_L) -o $(NAME)
-
-$(LIBFT):
-					make -C $(LIBFT_PATH) all
+${LIBFT}:
+					make -C $(LIBFT_DIR) all
 
 clean:
-					make -C $(LIBFT_PATH) clean
-					$(RM) $(OBJS)
+					make -C $(LIBFT_DIR) clean
 
 fclean: clean
-					make -C $(LIBFT_PATH) fclean
+					make -C $(LIBFT_DIR) fclean
 					$(RM) $(NAME)
 
 re: fclean all

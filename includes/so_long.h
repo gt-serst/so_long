@@ -18,7 +18,7 @@
 # include <errno.h>
 # include <string.h>
 # include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
+# include <mlx.h>
 
 # define EMPTY_XPM "assets/xpm/lava.xpm"
 # define WALL_XPM "assets/xpm/wall.xpm"
