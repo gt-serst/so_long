@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:17:38 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/14 13:07:07 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:48:24 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 int	close_window(t_program *program)
 {
-	if (program->window.reference != NULL)
-	{
-		mlx_destroy_window(program->mlx, program->window.reference);
-		program->window.reference = NULL;
-	}
-	if (program->map != NULL)
-		free_arr(program->map);
+	mlx_destroy_window(program->mlx, program->window.reference);
+	program->window.reference = NULL;
 	free(program->mlx);
+	free_arr(program->map);
 	exit(EXIT_SUCCESS);
 }
 
@@ -58,13 +54,13 @@ void	game_init(t_program *program)
 {
 	program->mlx = mlx_init();
 	if (program->mlx == NULL)
-		exit_msg(program->map, "Mlx error\n");
+		exit_msg(program->map, "Mlx error");
 	program->window.reference = mlx_new_window(program->mlx,
 		program->game.map_width * 64, program->game.map_height * 64, "Wrath of the Lich King");
 	if (program->window.reference == NULL)
 	{
 		free(program->window.reference);
-		exit_msg(program->map, "Couldn't connect to the window\n");
+		exit_msg(program->map, "Couldn't connect to the window");
 	}
 	mlx_hook(program->window.reference, 17, 0, close_window, program);
 	sprites_init(program);

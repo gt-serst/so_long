@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:45:26 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/14 13:08:15 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:22:26 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,14 @@ void	parsing(t_program *program, char *argv)
 	if (!program->map)
 		exit_msg(program->map, "Split failed");
 	if (!check_type_of_components(program->map))
-		exit_msg(program->map, "Map contains wrong components\n");
+		exit_msg(program->map, "Map contains wrong components");
 	if (!check_width(program) || !check_height(program))
-		exit_msg(program->map, "Map is not rectangular\n");
+		exit_msg(program->map, "Map is not rectangular");
 	if (!is_closed_by_walls(program->map,
 		program->game.map_width, program->game.map_height))
-		exit_msg(program->map, "Map not closed by walls\n");
+		exit_msg(program->map, "Map not closed by walls");
 	if (count_components(program->map, COIN) < 1
 		|| count_components(program->map, PLAYER) != 1
 		|| count_components(program->map, EXIT) != 1)
-		exit_msg(program->map, "Map contains wrong number of components\n");
+		exit_msg(program->map, "Map contains wrong number of components");
 }

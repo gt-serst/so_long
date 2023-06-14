@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:58 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/14 12:14:02 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:23:26 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ static void	flood_fill(t_program *program, int row, int col)
 
 	map = create_clone(program->map);
 	if (!map)
-		exit_msg(map, "Malloc allocation failed\n");
+		exit_msg(map, "Couldn't create a clone");
 	ff_collectible(map, row, col, WALL);
 	if (!is_collectible_reached(map))
-		exit_msg(map, "No valid path found\n");
+		exit_msg(map, "No valid path found");
 	free_arr(map);
 	map = create_clone(program->map);
 	if (!map)
-		exit_msg(map, "Malloc allocation failed");
+		exit_msg(map, "Couldn't create a clone");
 	ff_exit(map, row, col, WALL);
 	if (!is_exit_reached(map))
-		exit_msg(map, "No valid path found\n");
+		exit_msg(map, "No valid path found");
 	free_arr(map);
 }
 

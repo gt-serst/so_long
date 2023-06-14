@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/14 13:13:47 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:45:57 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 # define PLAYER 'P'
 # define EXIT 'E'
 
-# define EMPTY_XPM "assets/xpm/lava.xpm"
+# define EMPTY_XPM "assets/xpm/empty.xpm"
 # define WALL_XPM "assets/xpm/wall.xpm"
-# define COIN_XPM "assets/xpm/crystal.xpm"
+# define COIN_XPM "assets/xpm/coin.xpm"
 # define PLAYER_XPM "assets/xpm/player.xpm"
-# define EXIT_XPM "assets/xpm/door.xpm"
+# define EXIT_XPM "assets/xpm/exit.xpm"
 
 typedef struct s_vector {
 	int	x;
@@ -106,11 +106,9 @@ void		backward_motion(t_program *program, t_game *game);
 void		right_motion(t_program *program, t_game *game);
 void		left_motion(t_program *program, t_game *game);
 
-/*				MECHANICS				*/
-void		action(t_program *program, t_game *game);
-
 /*				CLEANING DATA			*/
 void		free_arr(char **arr);
+void		destroy_images(t_program *program);
 
 /*				ERROR MANAGEMENT		*/
 void		exit_msg(char **map, char *msg);

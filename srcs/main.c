@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:49 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/14 13:12:29 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:42:38 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	exit_msg(char **map, char *msg)
 {
 	if (map)
 		free_arr(map);
-	ft_printf("Error\n%s", msg);
+	ft_printf("Error\n%s\n", msg);
 	exit(errno);
 }
 
@@ -40,7 +40,7 @@ static void	check_extension(char *argv)
 	if (!ft_strnstr(argv, ".ber", ft_strlen(argv)))
 	{
 		ft_printf("Error\nWrong map extension, expected .ber\n");
-		exit(errno);
+		exit(EXIT_FAILURE);
 	}
 }
 
