@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 13:26:57 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/14 13:12:17 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 13:13:47 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define EMPTY_XPM "assets/xpm/lava.xpm"
 # define WALL_XPM "assets/xpm/wall.xpm"
-# define COIN_XPM "assets/xpm/crystal2.xpm"
+# define COIN_XPM "assets/xpm/crystal.xpm"
 # define PLAYER_XPM "assets/xpm/player.xpm"
 # define EXIT_XPM "assets/xpm/door.xpm"
 
