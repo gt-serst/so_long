@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:47:58 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/07 11:08:34 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 12:14:02 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ static void	flood_fill(t_program *program, int row, int col)
 	map = create_clone(program->map);
 	if (!map)
 		exit_msg(map, "Malloc allocation failed\n");
-	ff_collectible(map, row, col, 49);
+	ff_collectible(map, row, col, WALL);
 	if (!is_collectible_reached(map))
 		exit_msg(map, "No valid path found\n");
 	free_arr(map);
 	map = create_clone(program->map);
 	if (!map)
 		exit_msg(map, "Malloc allocation failed");
-	ff_exit(map, row, col, 49);
+	ff_exit(map, row, col, WALL);
 	if (!is_exit_reached(map))
 		exit_msg(map, "No valid path found\n");
 	free_arr(map);
@@ -59,9 +59,9 @@ void	get_player_position(t_program *program)
 	while (program->map[row])
 	{
 		col = 0;
-		while (program->map[row][col] && program->map[row][col] != 'P')
+		while (program->map[row][col] && program->map[row][col] != PLAYER)
 			col++;
-		if (program->map[row][col] == 'P')
+		if (program->map[row][col] == PLAYER)
 		{
 			flood_fill(program, row, col);
 			break ;

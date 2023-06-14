@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 16:53:12 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/07 11:05:46 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 10:33:55 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ff_collectible(char **map, int row, int col, int walls)
 	n = ft_strlen(map[0]) - 1;
 	m = count_rows(map) - 1;
 	if (row < 0 || row >= m || col < 0 || col >= n || map[row][col] == walls
-			|| map[row][col] == 'E')
+			|| map[row][col] == EXIT)
 		return ;
 	else
 	{
@@ -60,9 +60,9 @@ int	is_collectible_reached(char **map)
 	while (map[row])
 	{
 		col = 0;
-		while (map[row][col] && map[row][col] != 'C')
+		while (map[row][col] && map[row][col] != COIN)
 			col++;
-		if (map[row][col] == 'C')
+		if (map[row][col] == COIN)
 			return (0);
 		row++;
 	}
@@ -78,9 +78,9 @@ int	is_exit_reached(char **map)
 	while (map[row])
 	{
 		col = 0;
-		while (map[row][col] && map[row][col] != 'E')
+		while (map[row][col] && map[row][col] != EXIT)
 			col++;
-		if (map[row][col] == 'E')
+		if (map[row][col] == EXIT)
 			return (0);
 		row++;
 	}

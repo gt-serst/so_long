@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:04:46 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/13 23:53:24 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 13:07:46 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,57 +14,18 @@
 
 void	action(t_program *program, t_game *game)
 {
-	program->map[game->old.x / 64][game->old.y / 64] = '0';
-/*
-	mlx_destroy_image(program->mlx, program->sprite[game->old.y]
-		[game->old.x].reference);
-*/
-/*
-	mlx_put_image_to_window(program->mlx, program->window.reference,
-		program->sprite[0].reference, game->old.y,
-		game->old.x);
-*/
-	program->map[game->new.x / 64][game->new.y / 64] = 'P';
+	program->map[game->old.x / 64][game->old.y / 64] = EMPTY;
+	program->map[game->current.x / 64][game->current.y / 64] = PLAYER;
 	update_player_position(program->map, game);
 	program->game.movements_counter++;
 	ft_printf("%d\n", program->game.movements_counter);
 }
 
-/*
-void	loot_gold(t_program *program, t_game *game)
-{
-	program->game.coins++;
-	mlx_put_image_to_window(program->mlx, program->window.reference,
-		program->sprite[0].reference, game->new.y,
-		game->new.x);
-	move_to_next_tile(program, game);
-}
-
-void	quit_game(t_program *program)
-{
-	program->game.m++;
-	ft_printf("%d\nWell done, another step forward for the Undead Scourge!\n",
-		program->game.m);
-	close_window(program);
-}
-*/
-
 void	motion_manager(t_program *program, t_game *game)
 {
-/*
-	if (program->map[game->new.x / 64][game->new.y / 64] == '0')
-		move_to_next_tile(program, game);
-*/
-	if (program->map[game->new.x / 64][game->new.y / 64] == 'C')
-	{
+	if (program->map[game->current.x / 64][game->current.y / 64] == COIN)
 		program->game.coins_counter++;
-/*
-		mlx_put_image_to_window(program->mlx, program->window.reference,
-			program->sprite[0].reference, game->new.y,
-			game->new.x);
-*/
-	}
-	else if (program->map[game->new.x / 64][game->new.y / 64] == 'E')
+	else if (program->map[game->current.x / 64][game->current.y / 64] == EXIT)
 	{
 		program->game.movements_counter++;
 		ft_printf("%d\nWell done, another step forward for the Undead Scourge!\n",

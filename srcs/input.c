@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:21:50 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/13 23:54:29 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 13:08:00 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,25 @@ void	update_player_position(char **map, t_game *game)
 		col = 0;
 		while (map[row][col])
 		{
-			if (map[row][col] == 'P')
+			if (map[row][col] == PLAYER)
 			{
-				game->effect.x = row * 64;
-				game->effect.y = col * 64;
+				game->actual.x = row * 64;
+				game->actual.y = col * 64;
 				break ;
 			}
 			col++;
 		}
 		row++;
 	}
+}
+
+void	destroy_images(t_program *program)
+{
+	mlx_destroy_image(program->mlx, program->empty.reference);
+	mlx_destroy_image(program->mlx, program->wall.reference);
+	mlx_destroy_image(program->mlx, program->coin.reference);
+	mlx_destroy_image(program->mlx, program->player.reference);
+	mlx_destroy_image(program->mlx, program->exit.reference);
 }
 
 int	user_input(int key, t_program *program)
@@ -50,19 +59,8 @@ int	user_input(int key, t_program *program)
 		forward_motion(program, &game);
 	if (key == 53)
 		close_window(program);
-/*
-	mlx_put_image_to_window(program->mlx, program->window.reference,
-		program->sprite[game.old.y][game.old.x].reference, game.effect.y,
-		game.effect.x);
-*/
+	destroy_images(program);
+	sprites_init(program);
+	rendering(program);
 	return (0);
 }
-/*
-void	game_init(t_program *program)
-{
-	program->game.c = count_components(program->map, 'C');
-	program->game.coins = 0;
-	program->game.m = 0;
-	mlx_hook(program->window.reference, 2, (1L << 0), user_input, program);
-}
-*/

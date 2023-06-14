@@ -6,7 +6,7 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 17:01:35 by gt-serst          #+#    #+#              #
-#    Updated: 2023/06/13 15:24:16 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/06/14 13:07:13 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,13 @@ RM					= rm -rf
 SRCS				= $(addprefix $(SRCS_DIR),\
 					main.c \
 					parsing.c \
-					cleaning.c \
+					extracting.c \
 					parsing_utils.c \
 					flood_fill.c \
 					flood_fill_utils.c \
-					display_init.c \
-					mlx_graphic.c \
-					mlx_assets.c \
-					game_init.c \
+					init.c \
+					rendering.c \
+					input.c \
 					motion.c \
 					mechanics.c)
 
