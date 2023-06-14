@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:04:46 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/14 14:33:56 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:39:48 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	motion_manager(t_program *program, t_game *game)
 	{
 		program->game.movements_counter++;
 		ft_printf("%d\nWell done, another step forward for the Undead Scourge!\n",
-		program->game.movements_counter);
+			program->game.movements_counter);
 		close_window(program);
 	}
 	action(program, game);

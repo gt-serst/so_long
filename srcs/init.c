@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:17:38 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/06/14 15:48:24 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:42:07 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ t_image	new_sprite(void *mlx, char *path, t_program *program)
 {
 	t_image	sprite;
 
-	sprite.reference = mlx_xpm_file_to_image(mlx, path, &sprite.width, &sprite.height);
+	sprite.reference = mlx_xpm_file_to_image(mlx, path,
+			&sprite.width, &sprite.height);
 	if (sprite.reference == NULL)
 		exit_msg(program->map, "Couldn't save a sprite\n");
 	return (sprite);
@@ -56,7 +57,8 @@ void	game_init(t_program *program)
 	if (program->mlx == NULL)
 		exit_msg(program->map, "Mlx error");
 	program->window.reference = mlx_new_window(program->mlx,
-		program->game.map_width * 64, program->game.map_height * 64, "Wrath of the Lich King");
+			program->game.map_width * 64,
+			program->game.map_height * 64, "Wrath of the Lich King");
 	if (program->window.reference == NULL)
 	{
 		free(program->window.reference);
